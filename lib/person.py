@@ -24,7 +24,7 @@ class Person:
         return self._name
     
     def set_name(self, name):
-        if (type(name) == str) and ( 1 <= len(name) <= 25) :
+        if ((type(name) == str) and ( 1 <= len(name) <= 25)) :
             self._name = name
         else:
             print("Name must be string between 1 and 25 characters.")
@@ -34,22 +34,25 @@ class Person:
         return self._name
     
     def set_name(self, name):
-        if   (1 <= len(name) <= 25) :
+        if (type(name) == str) and (1 <= len(name) <= 25) :
             self._name = name.title()
         else:
             print("Name must be string between 1 and 25 characters.")
     name=property(get_name,set_name)         
 
     def get_job(self):
-        return self._job
+        return self._job 
     
     def set_job(self, job):
-        if job in APPROVED_JOBS:
-            self._job = job
-        else:
+        if job not in APPROVED_JOBS:
             print("Job must be in list of approved jobs.")
+        else:
+            self._job = job
 
     job = property(get_job, set_job)   
+
+    def get_job(self):
+        return self._job
 
     def set_job(self, job):
         if job in APPROVED_JOBS:
